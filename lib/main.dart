@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:to_do_list/app/data/services/storage/services.dart';
 import 'package:to_do_list/app/modules/home/binding.dart';
 import 'package:to_do_list/app/modules/home/view.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
       ),
       home: const HomePage(),
       initialBinding: HomeBinding(),
+      builder: EasyLoading.init(),
     );
   }
 }
