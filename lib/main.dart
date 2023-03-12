@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_list/app/data/services/storage/services.dart';
+import 'package:to_do_list/app/modules/home/binding.dart';
 import 'package:to_do_list/app/modules/home/view.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -16,12 +17,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+    return GetMaterialApp(
+      title: 'Todo List',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home: const HomePage(),
+      initialBinding: HomeBinding(),
     );
   }
 }
