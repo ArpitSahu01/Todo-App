@@ -15,6 +15,7 @@ class StorageService extends GetxService{
 
   T read<T>(String key){
     return _box.read(key);
+    
   }
 
   void write(String key, dynamic value) async{
