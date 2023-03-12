@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:to_do_list/app/modules/home/controller.dart';
-import 'package:to_do_list/app/modules/home/widgets/add_cart.dart';
+import 'package:to_do_list/app/modules/home/widgets/add_card.dart';
 
 class HomePage extends GetView<HomeController> {
   const HomePage({Key? key}) : super(key: key);
