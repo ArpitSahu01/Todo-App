@@ -60,7 +60,11 @@ class HomePage extends GetView<HomeController> {
                 ()=> FloatingActionButton(
               backgroundColor: controller.deleting.value? Colors.red:blue,
               onPressed: (){
-                Get.to(()=>AddDialog(),transition: Transition.downToUp);
+                if(controller.tasks.isNotEmpty){
+                  Get.to(()=>AddDialog(),transition: Transition.downToUp);
+                } else{
+                  EasyLoading.showInfo("Please create your task type");
+                }
               },
               child:  Icon(controller.deleting.value? Icons.delete: Icons.add),
             ),
