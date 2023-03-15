@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:to_do_list/app/data/services/storage/repository.dart';
 
 import '../../data/models/task.dart';
@@ -11,6 +12,7 @@ class HomeController extends GetxController{
   HomeController({required this.taskRepository});
   final formKey = GlobalKey<FormState>();
   final editCtrl = TextEditingController();
+  final tabIndex = 0.obs;
   final chipIndex = 0.obs;
   final deleting = false.obs;
   final tasks = <Task>[].obs;
@@ -141,6 +143,10 @@ return todos.any((element)=>element['title'] == title);
       }
     }
     return res;
+  }
+
+  void changeTabIndex(int index){
+    tabIndex.value  = index;
   }
 
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import 'package:to_do_list/app/core/utils/extensions.dart';
 import 'package:to_do_list/app/core/values/colors.dart';
 import 'package:to_do_list/app/data/models/task.dart';
 import 'package:to_do_list/app/modules/home/controller.dart';
@@ -74,6 +75,28 @@ class HomePage extends GetView<HomeController> {
         controller.deleteTask(task);
         EasyLoading.showSuccess('Delete Success');
         },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (int index)=> controller.changeTabIndex(index),
+        currentIndex: controller.tabIndex.value,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        items: [
+          BottomNavigationBarItem(
+            label: 'Home',
+              icon: Padding(
+                padding: EdgeInsets.only(right: 15.0.wp),
+                  child: Icon(Icons.apps)
+              ),
+          ),
+          BottomNavigationBarItem(
+            label: 'Report',
+            icon: Padding(
+                padding: EdgeInsets.only(left: 15.0.wp),
+                child: Icon(Icons.data_usage)),
+          ),
+        ],
       ),
     );
   }
