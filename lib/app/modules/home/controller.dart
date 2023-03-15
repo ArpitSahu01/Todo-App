@@ -149,4 +149,27 @@ return todos.any((element)=>element['title'] == title);
     tabIndex.value  = index;
   }
 
+  int  getTotalTask() {
+    var res = 0;
+    for (int i = 0; i<tasks.length; i++){
+      if(tasks[i].todos != null){
+        res += tasks[i].todos!.length;
+      }
+    }
+    return res;
+  }
+
+  int getTotalDoneTask(){
+    var res = 0;
+    for (int i = 0; i < tasks.length ; i++){
+      if(tasks[i].todos != null){
+        for(int j = 0; j < tasks[j].todos!.length ;j++){
+          if(tasks[i].todos![j]['done'] == true){
+            res +=1;
+          }
+        }
+      }
+    }
+    return res;
+  }
 }
