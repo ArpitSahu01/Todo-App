@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:step_progress_indicator/step_progress_indicator.dart';
 import 'package:to_do_list/app/core/utils/extensions.dart';
 import 'package:to_do_list/app/modules/home/controller.dart';
 
@@ -37,10 +38,46 @@ class DetailPage extends StatelessWidget {
                 ),
                 SizedBox(width: 3.0.wp,),
                 Text(task.title,style: TextStyle(fontSize: 12.0.sp,fontWeight: FontWeight.bold),),
-
               ],
             ),
-          )
+          ),
+          Obx((){
+            var totalTodos = homeCtrl.doneTodos.length + homeCtrl.doingTodos.length;
+            return Padding(
+              padding:  EdgeInsets.only(
+                top: 3.0.wp,
+                left: 16.0.wp,
+                right: 16.0.wp,
+              ),
+              child: Row(
+                children: [
+                  Text("$totalTodos Tasks",style: TextStyle(fontSize: 12.0.sp,color: Colors.grey),),
+                  SizedBox(width: 3.0.wp,),
+                  Expanded(
+                    child: StepProgressIndicator(
+                        totalSteps: totalTodos == 0 ? 1 : totalTodos,
+                        currentStep: homeCtrl.doneTodos.length,
+                        size: 5,
+                        padding: 0,
+                        selectedGradientColor: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [color.withOpacity(0.5),color]
+                        ),
+                      unselectedGradientColor: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [Colors.grey[300]!,Colors.grey[300]!]
+                      ),
+                    ),
+                  ),
+
+                ],
+              ),
+            );
+          }
+          ),
+
         ],
       ),
     );
