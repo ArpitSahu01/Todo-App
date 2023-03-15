@@ -113,4 +113,20 @@ return todos.any((element)=>element['title'] == title);
     tasks.refresh();
   }
 
+  void doneTodo(String title){
+    var doingTodo = {'title': title,'done': false};
+    int index = doingTodos.indexWhere((element) => mapEquals<String,dynamic>(doingTodo, element));
+    doingTodos.removeAt(index);
+    var doneTodo = {'title': title,'done': false};
+    doneTodos.add(doneTodo);
+    doingTodos.refresh();
+    doneTodos.refresh();
+  }
+
+  void deleteDoneTodo(dynamic doneTodo) {
+    int index = doneTodos.indexWhere((element) => mapEquals(doneTodo, element));
+    doneTodos.removeAt(index);
+    doneTodos.refresh();
+  }
+
 }
