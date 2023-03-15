@@ -94,7 +94,7 @@ class DetailPage extends StatelessWidget {
                     borderSide: BorderSide(color: Colors.grey[400]!),
                   ),
                   prefixIcon: Icon(Icons.check_box_outline_blank,color: Colors.grey[400]!,),
-                  suffix: IconButton(
+                  suffixIcon: IconButton(
                     onPressed: (){
                       if(homeCtrl.formKey.currentState!.validate()){
                         var success = homeCtrl.addTodo(homeCtrl.editCtrl.text);
