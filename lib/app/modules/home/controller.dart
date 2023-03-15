@@ -93,7 +93,7 @@ return todos.any((element)=>element['title'] == title);
       return false;
     }
     var doneTodo = {"title":title, 'done' : true};
-    if(doneTodos.any((element) => mapEquals(todo, element))){
+    if(doneTodos.any((element) => mapEquals(doneTodo, element))){
       return false;
     }
     doingTodos.add(todo);
@@ -117,7 +117,7 @@ return todos.any((element)=>element['title'] == title);
     var doingTodo = {'title': title,'done': false};
     int index = doingTodos.indexWhere((element) => mapEquals<String,dynamic>(doingTodo, element));
     doingTodos.removeAt(index);
-    var doneTodo = {'title': title,'done': false};
+    var doneTodo = {'title': title,'done': true};
     doneTodos.add(doneTodo);
     doingTodos.refresh();
     doneTodos.refresh();
