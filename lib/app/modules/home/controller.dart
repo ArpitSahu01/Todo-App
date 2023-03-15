@@ -1,5 +1,6 @@
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:to_do_list/app/data/services/storage/repository.dart';
 
@@ -85,4 +86,31 @@ return todos.any((element)=>element['title'] == title);
        }
      }
   }
+
+  bool addTodo(String title) {
+    var todo = {"title":title, 'done' : false};
+    if(doingTodos.any((element) => mapEquals<String,dynamic>(todo, element))){
+      return false;
+    }
+    var doneTodo = {"title":title, 'done' : true};
+    if(doneTodos.any((element) => mapEquals(todo, element))){
+      return false;
+    }
+    doingTodos.add(todo);
+    return true;
+  }
+
+  void updateTodos(){
+    var newTodos = <Map<String, dynamic>>[];
+    newTodos.addAll(
+      [
+        ...doingTodos,
+        ...doneTodos,
+      ]);
+    var newTask = task.value!.copyWith(todos: newTodos);
+    int oldIdx = tasks.indexOf(task.value);
+    tasks[oldIdx] = newTask;
+    tasks.refresh();
+  }
+
 }
